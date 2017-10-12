@@ -718,7 +718,7 @@ class 'Recommend'
 function Recommend:__init()
 	self.RecommendedUtility = {
 	[1] = {Name = "Radar Hack", 	Link = "https://raw.githubusercontent.com/qqwer1/GoS-Lua/master/RadarHack.lua",		       		Author = "Noddy",	File = "RadarHack"},
-	[2] = {Name = "Recall Tracker",	Link = "https://raw.githubusercontent.com/qqwer1/GoS-Lua/master/RecallTracker.lua",	       		Author = "Noddy",	File = "RecallTracker"},
+	[2] = {Name = "Recall Tracker",	Link = "https://rw.githubusercontent.com/qqwer1/GoS-Lua/master/RecallTracker.lua",	       		Author = "Noddy",	File = "RecallTracker"},
 	[3] = {Name = "GoSEvade",       Link = "https://raw.githubusercontent.com/KeVuong/GoS/master/Evade.lua",                   		Author = "MeoBeo",	File = "Evade"},
 	[4] = {Name = "ChallengerEvade",Link = "https://raw.githubusercontent.com/D3ftsu/GoS/master/ChallengerEvade.lua",      			Author = "Deftsu",	File = "ChallengerEvade"},
 	}
