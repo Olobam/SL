@@ -7798,11 +7798,6 @@ function Activator:Ignite()
   end
 end
 
-function Activator:Heal()
-		if IsReady(Heal) and M.Sum.Heal.healme:Value() and GetPercentHP(myHero) <= M.Sum.Heal.myHP:Value() and EnemiesAround(GetOrigin(myHero), 675) >= 1 and not myHero.dead then
-			CastSpell(Heal)
-		end
-
 function Activator:Snowball()
 	for _,unit in pairs(GetEnemyHeroes()) do
 		local Pred = GetPredictionForPlayer(myHero.pos,unit,unit.ms, Snowballd.speed, Snowballd.delay*1000, Snowballd.range, Snowballd.width, true, true)
