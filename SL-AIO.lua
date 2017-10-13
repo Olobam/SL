@@ -7462,7 +7462,6 @@ function Activator:__init()
 	self.badPot = false
 	self.cc = {}
 	Ignite = (GetCastName(GetMyHero(),SUMMONER_1):lower():find("summonerdot") and SUMMONER_1 or (GetCastName(GetMyHero(),SUMMONER_2):lower():find("summonerdot") and SUMMONER_2 or nil))
-	Heal = (GetCastName(GetMyHero(),SUMMONER_1):lower():find("summonerheal") and SUMMONER_1 or (GetCastName(GetMyHero(),SUMMONER_2):lower():find("summonerheal") and SUMMONER_2 or nil))
 	Snowball = (GetCastName(GetMyHero(),SUMMONER_1):lower():find("summonersnowball") and SUMMONER_1 or (GetCastName(GetMyHero(),SUMMONER_2):lower():find("summonersnowball") and SUMMONER_2 or nil))
 	Barrier = (GetCastName(GetMyHero(),SUMMONER_1):lower():find("summonerbarrier") and SUMMONER_1 or (GetCastName(GetMyHero(),SUMMONER_2):lower():find("summonerbarrier") and SUMMONER_2 or nil))
 	Smite = (GetCastName(myHero,4):lower():find("smite") and 4) or (GetCastName(myHero,5):lower():find("smite") and 5) or nil
@@ -7546,13 +7545,6 @@ function Activator:__init()
 	M.Sum:Menu("ign", "Ignite")
 	M.Sum.ign:Boolean("enable","Enable Ignite", true)
 	end
-	if Heal then 
-	M.Sum:Menu("Heal", "Heal")
-	M.Sum.Heal:Boolean("healme","Heal myself", true)
-	M.Sum.Heal:Boolean("healally", "Heal ally", true)
-	M.Sum.Heal:Slider("allyHP", "Ally HP to heal him", 8, 1, 100, 2)
-	M.Sum.Heal:Slider("myHP", "my HP to heal myself", 8, 1, 100, 2)
-	end
 	if Snowball then
 	M.Sum:Menu("SB", "Snowball")
 	M.Sum.SB:Boolean("enable", "Enable Snowball", false)
@@ -7593,9 +7585,7 @@ function Activator:Tickpx()
 	if Ignite then 
 		self:Ignite() 
 	end
-	if Heal then 
-		self:Heal() 
-	end
+							
 	if Snowball then 
 		self:Snowball() 
 	end
@@ -7812,12 +7802,6 @@ function Activator:Heal()
 		if IsReady(Heal) and M.Sum.Heal.healme:Value() and GetPercentHP(myHero) <= M.Sum.Heal.myHP:Value() and EnemiesAround(GetOrigin(myHero), 675) >= 1 and not myHero.dead then
 			CastSpell(Heal)
 		end
-	for _,a in pairs(GetAllyHeroes()) do
-		if a and IsReady(Heal) and M.Sum.Heal.healally:Value() and GetPercentHP(a) <= M.Sum.Heal.allyHP:Value() and EnemiesAround(GetOrigin(myHero), 675) >= 1 and GetDistance(myHero,a) < 675 and not a.dead then
-			CastSpell(Heal)
-		end
-	end
-end
 
 function Activator:Snowball()
 	for _,unit in pairs(GetEnemyHeroes()) do
