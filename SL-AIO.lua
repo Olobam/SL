@@ -7797,15 +7797,7 @@ function Activator:Ignite()
 	end
   end
 end
-
-function Activator:Snowball()
-	for _,unit in pairs(GetEnemyHeroes()) do
-		local Pred = GetPredictionForPlayer(myHero.pos,unit,unit.ms, Snowballd.speed, Snowballd.delay*1000, Snowballd.range, Snowballd.width, true, true)
-		if IsReady(Snowball) and M.Sum.SB.enable:Value() and Pred and Pred.HitChance == 1 and GetDistance(Pred.PredPos,GetOrigin(myHero)) < Snowballd.range and not unit.dead then
-			CastSkillShot(Snowball,Pred.PredPos)
-		end
-	end
-end
+						
 
 function Activator:Barrier()
 	if IsReady(Barrier) and M.Sum.Barrier.enable:Value() and GetPercentHP(myHero) <= M.Sum.Barrier.myHP:Value() and EnemiesAround(GetOrigin(myHero), 675) >= 1 and not myHero.dead then
