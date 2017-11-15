@@ -508,18 +508,6 @@ local function dArrow(s, e, w, c)--startpos,endpos,width,color
 	DrawLine3D(s3.x,s3.y,s3.z,e.x,e.y,e.z,w,c)	
 end
 
-if not FileExist(COMMON_PATH.. "Analytics.lua") then
-  DownloadFileAsync("https://raw.githubusercontent.com/LoggeL/GoS/master/Analytics.lua", COMMON_PATH .. "Analytics.lua", function() end)
-end
-
-if SLSChamps[myHero.charName] then
-	if FileExist(COMMON_PATH.. "Analytics.lua") then
-		require("Analytics")
-
-		Analytics("SL-AIO", "SL-Team", true)
-	end
-end
-
 local Name = GetMyHero()
 local ChampName = myHero.charName
 local Dmg = {}
